@@ -1,4 +1,5 @@
 import Console
+import Vapor
 
 public protocol Generator {
     var console: ConsoleProtocol { get }
@@ -29,7 +30,7 @@ public final class Generate: Command {
                                                        "routes": RouteGenerator.self,
                                                        "test": TestsGenerator.self]
     
-    public init(console: ConsoleProtocol) {
+    public init(_ console: ConsoleProtocol) {
         self.console = console
     }
     
@@ -45,4 +46,11 @@ public final class Generate: Command {
         try command.init(console: console).generate(arguments: passedOnArguments)
     }
     
+}
+
+extension Generate: ConfigInitializable {
+    public convenience init(config: Config) throws {
+        let console = try config.resolveConsole()
+        self.init(console)
+    }
 }
