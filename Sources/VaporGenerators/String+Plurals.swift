@@ -6,13 +6,13 @@ public extension String {
     }
     
     private var length: Int {
-        return  characters.count
+        return  count
     }
     
     private func substring(from index: Int, length: Int) -> String {
         let start = self.index(self.startIndex, offsetBy: index)
         let end = self.index(self.startIndex, offsetBy: index + length)
-        return self[start ..< end]
+        return String(self[start ..< end])
     }
     
     private var vowels: [String] {

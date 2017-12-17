@@ -38,7 +38,7 @@ public final class Generate: Command {
     }
     
     public func run(arguments: [String]) throws {
-        guard let type = try value("type", from: arguments).string else { throw ConsoleError.argumentNotFound }
+        let type = try value("type", from: arguments)
         guard let command = commands[type] else { throw ConsoleError.commandNotFound(type) }
         // Remove the generator type from the arguments.
         let passedOnArguments = Array(arguments[1 ..< arguments.count])
