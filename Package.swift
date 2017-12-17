@@ -1,11 +1,12 @@
+// swift-tools-version:4.0
 import PackageDescription
 
 let package = Package(
     name: "VaporGenerators",
     dependencies: [
-        .Package(url: "https://github.com/vapor/console.git", majorVersion: 1, minor: 0)
-    ],
-    exclude: [
-        "Templates"
+        .package(url: "https://github.com/vapor/console.git", .upToNextMajor(from: "2.3.0"))
     ]
+    // exclude: [
+    //     "Templates"
+    // ]
 )
