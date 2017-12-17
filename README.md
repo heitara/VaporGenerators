@@ -45,13 +45,22 @@ config.addConfigurable(command: Generate.init, name: "generate")
 
 Copy `Templates` folder in your project.
 
-_This is manual step which is neaded because SPM can't add static [resources](https://bugs.swift.org/browse/SR-2866). _
+_This is manual step which is neaded because SPM can't add static [resources](https://bugs.swift.org/browse/SR-2866git). _
 
 	Source
 	└── VaporGenerators
 	    └── Templates 
 
 ### Step 4. Build your project
+
+Add `"generate"` to `Config\droplet.json` in the "commands". For example:
+
+    "commands": [
+        "prepare",
+        "generate"
+    ]
+
+### Step 5. Build your project
 
 ```shell
 # In a Terminal window
