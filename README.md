@@ -21,7 +21,7 @@ You can install the generators using 3 simple steps:
 Package(
     ...
     dependencies: [
-        .Package(url: "https://github.com/gtranchedone/VaporGenerators.git", majorVersion: 0),
+		.package(url: "https://github.com/heitara/VaporGenerators.git", .exact("0.1.5")),
         ...
     ]
     ...
@@ -32,13 +32,26 @@ Package(
 
 ```swift
 // In your project's main.swift file
-let drop = Droplet()
+import VaporGenerators
 ...
-drop.commands.append(Generate(console: drop.console))
-drop.run()
+
+let config = try Config()
+try config.setup()
+config.addConfigurable(command: Generate.init, name: "generate")
+...
 ```
 
 ### Step 3. Build your project
+
+Copy `Templates` folder in your project.
+
+_This is manual step which is neaded because SPM can't add static [resources](https://bugs.swift.org/browse/SR-2866). _
+
+	Source
+	└── VaporGenerators
+	    └── Templates 
+
+### Step 4. Build your project
 
 ```shell
 # In a Terminal window
